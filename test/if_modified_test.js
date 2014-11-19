@@ -56,7 +56,7 @@ exports.if_modified = {
     'Make sure we can apply a function to the list of directories whose checksums have changed': function(test){
         test.expect(2);
         //Get the existing checksum
-        var cs = new CheckSum(path.join(__dirname, '..'))();
+        var cs = new CheckSum(path.join(__dirname, '..'))({'test/assets': ['test_task_1']});
         cs.generateChecksum('test/assets', function(checksum){
             cs.writeValues({'test/assets':checksum});
 
@@ -71,6 +71,7 @@ exports.if_modified = {
 
             //Apply the test runner function if the dir changed (it should have)
             cs.applyIfChanged(toApply, function(err, result){
+                console.log('result', result);
                 test.equal(result.length, 1);
                 test.equal(result[0][0], 'test_task_1');
                 test.done();

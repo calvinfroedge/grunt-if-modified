@@ -30,7 +30,9 @@ module.exports = function(grunt) {
     cs.applyIfChanged(toApply, function(err, result){
         var ran = 0;
         for(var k in result){
-            if(result[k] !== false) ++ran;
+            if(result[k] !== false){
+                ++ran;
+            }
         }
 
         grunt.log.write('Finished if_modified, ' + ran + ' tasks needed to run. Time: ' + (new Date() - start) + ' ms');
