@@ -1,7 +1,7 @@
 {
   "name": "grunt-if-modified",
   "description": "Only execute a grunt task if a directory or the files within it have changes since the last run.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/calvinfroedge/grunt-if-modified",
   "author": {
     "name": "Calvin Froedge",
