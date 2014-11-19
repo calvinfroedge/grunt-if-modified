@@ -17,6 +17,8 @@ var fs          = require('fs'),
 module.exports = function(grunt) {
   grunt.registerMultiTask('if_modified', 'Only execute a grunt task if a directory or the files within it have changes since the last run.', 
   function() {
+    console.log(path.resolve());
+
     var start = new Date();
     var cs = new CheckSum(path.resolve())(this.data.dirs);
 
@@ -30,9 +32,7 @@ module.exports = function(grunt) {
     cs.applyIfChanged(toApply, function(err, result){
         var ran = 0;
         for(var k in result){
-            if(result[k] !== false){
-                ++ran;
-            }
+            if(result[k] !== false) ++ran;
         }
 
         grunt.log.write('Finished if_modified, ' + ran + ' tasks needed to run. Time: ' + (new Date() - start) + ' ms');
@@ -40,3 +40,4 @@ module.exports = function(grunt) {
     });
   });
 };
+
