@@ -17,8 +17,6 @@ var fs          = require('fs'),
 module.exports = function(grunt) {
   grunt.registerMultiTask('if_modified', 'Only execute a grunt task if a directory or the files within it have changes since the last run.', 
   function() {
-    console.log(path.resolve());
-
     var start = new Date();
     var cs = new CheckSum(path.resolve())(this.data.dirs);
 
