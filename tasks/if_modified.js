@@ -19,11 +19,11 @@ module.exports = function(grunt) {
   function() {
     var start = new Date();
     var cs = new CheckSum(path.resolve())(this.data.dirs);
-
+    var data = this.data;
     var done = this.async();
 
-    var toApply = function(dir, callbackOnEach){
-        var ran = taskRunner(grunt, ['test_task_1']);
+    var toApply = function (dir, callbackOnEach) {
+        var ran = taskRunner(grunt, [data.dirs[dir]]);
         callbackOnEach(null, ran);
     };
 
